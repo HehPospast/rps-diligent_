@@ -52,13 +52,13 @@ def checkWin(User):
     Computername=checkComputername(Computer)
     print("[Игрок]-"+Username + " VS " +"[Компьютер]-"+ Computername)
     if(User==Computer):
-        print("Ничья")
+        #----------------------print("Ничья")
         winner = "Ничья"
     elif((User == 1 and Computer == 3) or (User == 3 and Computer == 1)):
-        print("Бумага Выиграла")
+        #----------------------print("Бумага Выиграла")
         winner = "Бумага"
     elif((User == 1 and Computer == 2) or (User == 2 and Computer == 1)):
-        print("Камень Выиграл")
+        #----------------------print("Камень Выиграл")
         winner = "Камень"
     else:
         print("Ножницы Выиграли")
