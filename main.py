@@ -4,8 +4,6 @@ import os
 
 """----------------Stone scissors paper----------------"""
 
-# -----Переменные-----
-Computer = random.randrange(1, 4, 1)
 
 
 # -----Очистка консоли-----
@@ -67,6 +65,7 @@ def check_username(user):
 
 # -----Проверка победы-----
 def check_win(user):
+    computer = random.randrange(1, 4, 1)
     username = check_username(user)
     computer_name = check_computer_name(Computer)
     time.sleep(2)
