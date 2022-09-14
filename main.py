@@ -1,86 +1,111 @@
 import random
+import time
+import os
 
 """----------------Stone scissors paper----------------"""
 
 # -----Переменные-----
 Computer = random.randrange(1, 4, 1)
+
+
+# -----Очистка консоли-----
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
+# -----Очистка консоли-----
+
+
 # -----Вывод имени компьютера-----
-def checkComputername(Computer):
-    if Computer == 1:
-        Computername = "Камень"
-        return Computername
-    elif Computer == 2:
-        Computername = "Ножницы"
-        return Computername
+def check_computer_name(computer):
+    if computer == 1:
+        computer_name = "Камень"
+        return computer_name
+    elif computer == 2:
+        computer_name = "Ножницы"
+        return computer_name
     else:
-        Computername = "Бумага"
-        return Computername
-#-----Инпут игрока-----
+        computer_name = "Бумага"
+        return computer_name
+
+
+# -----Input игрока-----
 def get_input():
-    Valid=False
+    valid = False
+    cls()
     print("*/*/*/* ROCK PAPER SCISSORS */*/*/* BY HehPospast")
     print("Выберите предмет\n"
           "1 - камень\n"
           "2 - ножницы\n"
           "3 - бумага")
-    while not Valid:
-     player_answer= input()
-     try:
-         player_answer = int(player_answer)
-     except:
-         print("Неверный числовой диапозон")
-         continue
-     if player_answer >= 1 and player_answer <= 3:
-         Valid = True
-         return player_answer
-     else:
-         print("Введите другое число")
-#-----Вывод имени игрока-----
-def checkUsername(User):
-    if User == 1:
-        Username = "Камень"
-        return Username
-    elif User == 2:
-        Username = "Ножницы"
-        return Username
+    while not valid:
+        player_answer = input('[Выбор]-')
+        try:
+            player_answer = int(player_answer)
+        except:
+            print("Неверный числовой диапазон")
+            continue
+        if 1 <= player_answer <= 3:
+            valid = True
+            return player_answer
+        else:
+            print("Введите другое число")
+# -----Input игрока-----
+
+
+# -----Вывод имени игрока-----
+def check_username(user):
+    if user == 1:
+        username = "Камень"
+        return username
+    elif user == 2:
+        username = "Ножницы"
+        return username
     else:
-        Username = "Бумага"
-        return Username
-#-----Проверка победы-----
-def checkWin(User):
-    Username= checkUsername(User)
-    Computername=checkComputername(Computer)
-    print("[Игрок]-"+Username + " VS " +"[Компьютер]-"+ Computername)
-    if(User==Computer):
-        #----------------------print("Ничья")
+        username = "Бумага"
+        return username
+# -----Вывод имени игрока-----
+
+
+# -----Проверка победы-----
+def check_win(user):
+    username = check_username(user)
+    computer_name = check_computer_name(Computer)
+    time.sleep(2)
+    print("[Игрок]-" + username + " VS " + "[Компьютер]-" + computer_name)
+    if user == Computer:
+        print("Ничья")
         winner = "Ничья"
-    elif((User == 1 and Computer == 3) or (User == 3 and Computer == 1)):
-        #----------------------print("Бумага Выиграла")
+    elif (user == 1 and Computer == 3) or (user == 3 and Computer == 1):
         winner = "Бумага"
-    elif((User == 1 and Computer == 2) or (User == 2 and Computer == 1)):
-        #----------------------print("Камень Выиграл")
+    elif (user == 1 and Computer == 2) or (user == 2 and Computer == 1):
         winner = "Камень"
     else:
-        print("Ножницы Выиграли")
         winner = "Ножницы"
 
-
-    if winner==Username:
+    time.sleep(1)
+    if winner == username:
         print("Игрок победил")
-    elif winner=="Ничья":
+    elif winner == "Ничья":
         print("Выиграла дружба")
     else:
         print("Компьютер победил")
-#-----Запуск сея залупы-----
+# -----Проверка победы-----
+
+
+# -----Запуск сея чуда-----
 def main():
-    checkWin(get_input())
+    check_win(get_input())
+# -----Запуск сея чуда-----
+
 
 main()
-#-----Реиграбельность-----
+
+
+# -----Реиграбельность-----
 while True:
-    print("Если хотите продолжить играть введите S или s")
-    getinput= input(str())
-    if((getinput=="S")or(getinput=="s")):
+    print("Если хотите продолжить играть нажмите ENTER, чтобы закончить играть введите любой текст!")
+    get_input_2 = input(str())
+    if get_input_2 == "":
+        cls()
         main()
     else:
-        exit(1000-7)
+        exit(1000 - 7)
